@@ -4,17 +4,20 @@ using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
 using UnityEngine.Video;
 using UnityEngine.Rendering;
+using System.Collections.Generic;
 
 
 public class PathAgent : Agent
 {
-    Rigidbody rBody; // Referinta la componenta RigidBody a agentului
+    private Rigidbody rBody;
+    private DetectObstacles detectObstacles; // Referinta la componenta RigidBody a agentului
     public Transform Target; // Referinta la componenta Transform a target-ului (sfarsitul platformei)
     public float movementForce = 10f;
-
+    public float jumpForce = 5f;
     void Start()
-    {
+    {   
         rBody = GetComponent<Rigidbody>(); // Se face referinta la componenta RigidBody
+        detectObstacles = GetComponent<DetectObstacles>(); 
     }
 
     // Initializeaza si reseteaza agentul
@@ -56,9 +59,13 @@ public class PathAgent : Agent
         }
         else{
             if(transform.localPosition.y < 0){
+                SetReward(-1.0f);
                 EndEpisode();
             }
-            // TODO: cod pentru detectarea coliziunii cu un obstacol 
+            
+            if(detectObstacles.obstacleDetected){
+                SetReward(-0.5f);
+            }
         }
     }
 }

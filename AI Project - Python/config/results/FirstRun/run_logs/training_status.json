@@ -1,0 +1,29 @@
+{
+    "PathAgent": {
+        "checkpoints": [
+            {
+                "steps": 32722,
+                "file_path": "results\\FirstRun\\PathAgent\\PathAgent-32722.onnx",
+                "reward": -8.166666666666666,
+                "creation_time": 1743271078.5189884,
+                "auxillary_file_paths": [
+                    "results\\FirstRun\\PathAgent\\PathAgent-32722.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 32722,
+            "file_path": "results\\FirstRun\\PathAgent.onnx",
+            "reward": -8.166666666666666,
+            "creation_time": 1743271078.5189884,
+            "auxillary_file_paths": [
+                "results\\FirstRun\\PathAgent\\PathAgent-32722.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

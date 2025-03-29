@@ -2,15 +2,11 @@ using UnityEngine;
 
 public class RotateAroundAxis : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public float rotationSpeed = 100f;
+    public Vector3 rotationVector = new(0, 1, 0);
 
-    // Update is called once per frame
     void Update()
     {
-        
+        transform.Rotate(rotationVector, rotationSpeed * Time.deltaTime);
     }
 }

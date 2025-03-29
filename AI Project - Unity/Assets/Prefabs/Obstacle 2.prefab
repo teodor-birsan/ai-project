@@ -617,14 +617,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Shape:
     rid: 9204883222452502529
-  m_Size: {x: -0.60805416, y: 0.9943876, z: -0.5208359}
-  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
-  m_PivotLocation: 1
-  m_PivotPosition: {x: 0, y: 0, z: 0}
+  m_ShapeRotation: {x: 0, y: 0, z: 0, w: 1}
   m_UnmodifiedMeshVersion: 3412
-  m_ShapeBox:
-    m_Center: {x: -0.30402708, y: 0.4971938, z: -0.26041794}
-    m_Extent: {x: -0.30402708, y: 0.4971938, z: -0.26041794}
+  m_Size: {x: -0.60805416, y: 0.9943876, z: -0.5208359}
+  m_LocalCenter: {x: 0, y: 0, z: 0}
   references:
     version: 2
     RefIds:
@@ -651,6 +647,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1293,14 +1292,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Shape:
     rid: 9204883222452502529
-  m_Size: {x: -0.60805416, y: 0.9943876, z: -0.5208359}
-  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
-  m_PivotLocation: 1
-  m_PivotPosition: {x: 0, y: 0, z: 0}
+  m_ShapeRotation: {x: 0, y: 0, z: 0, w: 1}
   m_UnmodifiedMeshVersion: 3412
-  m_ShapeBox:
-    m_Center: {x: -0.30402708, y: 0.4971938, z: -0.26041794}
-    m_Extent: {x: -0.30402708, y: 0.4971938, z: -0.26041794}
+  m_Size: {x: -0.60805416, y: 0.9943876, z: -0.5208359}
+  m_LocalCenter: {x: 0, y: 0, z: 0}
   references:
     version: 2
     RefIds:
@@ -1327,6 +1322,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1394,7 +1392,7 @@ GameObject:
   - component: {fileID: 3092802510985629093}
   - component: {fileID: 1704103287331545193}
   - component: {fileID: 5322296565144905021}
-  - component: {fileID: 6645382288894360509}
+  - component: {fileID: 3529644404397167182}
   m_Layer: 0
   m_Name: RotatingPart
   m_TagString: Untagged
@@ -1442,6 +1440,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1488,7 +1489,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6645382288894360509
+--- !u!114 &3529644404397167182
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1497,7 +1498,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6678176596188545398}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c9be4d7e3c28fa4fbda00dd0458a7c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fa769ecddf518c499a570238ff72967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 100
