@@ -1,6 +1,6 @@
 behaviors:
   PathAgent:
-    trainer_type: ppo # Trebuie schimbat in custom ca sa foloseasca algoritmul nostru
+    trainer_type: custom_ppo # Trebuie schimbat in custom ca sa foloseasca algoritmul nostru
     hyperparameters:
       batch_size: 120
       buffer_size: 12000
