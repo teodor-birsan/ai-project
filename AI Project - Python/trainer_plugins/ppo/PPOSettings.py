@@ -1,5 +1,6 @@
 from mlagents.trainers.settings import OnPolicyHyperparamSettings, ScheduleType
 
+
 class PPOSettings(OnPolicyHyperparamSettings):
     beta: float = 5.0e-3
     epsilon: float = 0.2
