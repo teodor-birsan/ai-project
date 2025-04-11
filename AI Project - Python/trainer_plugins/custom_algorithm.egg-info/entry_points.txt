@@ -1,0 +1,2 @@
+[mlagents.trainer_type]
+custom_ppo = trainer_plugins.trainers.ppo.ppo_trainer:get_type_and_setting

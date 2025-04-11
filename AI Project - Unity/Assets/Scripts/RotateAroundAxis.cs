@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine; 
-using Unity.VisualScripting;
-using System.Linq.Expressions;
+using UnityEngine;
 
-public class RotateAroundY : MonoBehaviour
+public class RotateAroundAxis : MonoBehaviour
 {
     public float rotationSpeed = 100f;
     public Vector3 rotationVector = new(0, 1, 0);
