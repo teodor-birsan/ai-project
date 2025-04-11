@@ -5,7 +5,6 @@ from mlagents.trainers.buffer import BufferKey, RewardSignalUtil
 from mlagents.trainers.optimizer.torch_optimizer import TorchOptimizer
 from mlagents.trainers.policy import Policy
 from mlagents.trainers.policy.torch_policy import TorchPolicy
-from mlagents.trainers.ppo.trainer import TRAINER_NAME
 from mlagents.trainers.settings import TrainerSettings
 from mlagents.trainers.torch_entities.networks import SimpleActor, SharedActorCritic
 from mlagents.trainers.trainer.on_policy_trainer import OnPolicyTrainer
@@ -14,8 +13,10 @@ from mlagents.trainers.trajectory import Trajectory
 from mlagents_envs.base_env import BehaviorSpec
 import numpy as np
 
-from trainer_plugins.ppo.PPOSettings import PPOSettings
-from trainer_plugins.ppo.ppo_optimizer import CustomOptimizer
+from .custom_ppo_settings import PPOSettings
+from .ppo_optimizer import CustomOptimizer
+
+TRAINER_NAME = "custom_ppo"
 
 
 class CustomPPOTrainer(OnPolicyTrainer):
@@ -142,6 +143,17 @@ class CustomPPOTrainer(OnPolicyTrainer):
         return policy
 
     @staticmethod
-    def get_type_and_settings():
-        return {CustomPPOTrainer.get_trainer_name(): CustomPPOTrainer}, {
-            CustomPPOTrainer.get_trainer_name(): PPOSettings}
+    def get_trainer_name() -> str:
+        return TRAINER_NAME
+
+    @staticmethod
+    def get_setting():
+        return PPOSettings
+
+
+def get_type_and_setting():
+    return {
+        CustomPPOTrainer.get_trainer_name(): CustomPPOTrainer
+    }, {
+        CustomPPOTrainer.get_trainer_name(): CustomPPOTrainer.get_setting()
+    }

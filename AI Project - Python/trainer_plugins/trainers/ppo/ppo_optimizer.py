@@ -3,13 +3,15 @@ from mlagents.torch_utils import default_device, torch
 from mlagents.trainers.buffer import AgentBuffer, BufferKey
 from mlagents.trainers.optimizer.torch_optimizer import TorchOptimizer
 from mlagents.trainers.policy.torch_policy import TorchPolicy
+from mlagents.trainers.settings import TrainerSettings
 from mlagents.trainers.torch_entities.networks import ValueNetwork
 from mlagents.trainers.torch_entities.utils import ModelUtils
 
-import PPOSettings
+from .custom_ppo_settings import PPOSettings
+
 
 class CustomOptimizer(TorchOptimizer):
-    def __init__(self, policy:TorchPolicy, trainer_settings: PPOSettings):
+    def __init__(self, policy: TorchPolicy, trainer_settings: TrainerSettings):
         super().__init__(policy, trainer_settings)
         reward_signal_configs = trainer_settings.reward_signals
         reward_signal_names = [key.value for key, _ in reward_signal_configs.items()]
@@ -119,4 +121,3 @@ class CustomOptimizer(TorchOptimizer):
             "Policy/Epsilon": decay_eps,
             "Policy/Beta": decay_beta,
         }
-
