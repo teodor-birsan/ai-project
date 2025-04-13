@@ -9,6 +9,8 @@ using System.Collections.Generic;
 
 public class PathAgent : Agent
 {
+    private bool episodeEnd;
+    public TrainingHandler trainingArea;
     private Rigidbody rBody;
     private DetectObstacles detectObstacles; // Referinta la componenta RigidBody a agentului
     public Transform Target; // Referinta la componenta Transform a target-ului (sfarsitul platformei)
@@ -19,19 +21,21 @@ public class PathAgent : Agent
     {   
         rBody = GetComponent<Rigidbody>(); // Se face referinta la componenta RigidBody
         detectObstacles = GetComponent<DetectObstacles>(); 
+        episodeEnd = false;
     }
 
     // Initializeaza si reseteaza agentul
     public override void OnEpisodeBegin()
     {
-        if(transform.localPosition.y < 0)
+        if (episodeEnd)
         {
             rBody.angularVelocity = Vector3.zero;
             rBody.linearVelocity = Vector3.zero;
-            var xPos = Random.Range(0, 6);
-            var zPos = Random.Range(0, 2);
-            transform.localPosition = new Vector3(xPos, 0, zPos);
-        }   
+            var xPos = Random.Range(0, trainingArea.spawnBoundX);
+            var zPos = Random.Range(0, trainingArea.spawnBoundZ);
+            transform.localPosition = new Vector3(xPos, 0.5f, zPos);
+            episodeEnd = false;
+        }
     }
 
     // Colecteaza informatii despre agent si target
@@ -58,25 +62,45 @@ public class PathAgent : Agent
         if (detectObstacles.isGrounded && jump > 0)
         {
             controlSignal.y = jump;
-            AddReward(-0.2f);
+            rBody.AddForce(controlSignal, ForceMode.Impulse);
+            AddReward(-0.1f);
         }
-        rBody.AddForce(controlSignal, ForceMode.Force);
+        else
+        {
+            rBody.AddForce(controlSignal, ForceMode.Force);
+        }
 
         float distanceToTarget = Vector3.Distance(transform.localPosition, Target.localPosition);
 
         if(distanceToTarget < 1.0f){
-            AddReward(5.0f);
+            AddReward(1.0f);
+            episodeEnd = true;
             EndEpisode();
         }
         else{
             if(transform.localPosition.y < 0){
-                AddReward(-5.0f);
+                AddReward(-1.0f);
+                episodeEnd = true;
                 EndEpisode();
             }
             
             if(detectObstacles.obstacleDetected){
-                AddReward(-0.5f);
+                AddReward(-0.2f);
             }
         }
+        if (float.IsNaN(rBody.linearVelocity.x) || float.IsNaN(transform.localPosition.x))
+        {
+            Debug.LogWarning("Detected NaN in agent data. Ending episode.");
+            episodeEnd= true;
+            EndEpisode();
+        }
+        if (transform.localPosition.x < 0 || transform.localPosition.x > trainingArea.xBound 
+            || transform.localPosition.z < 0 || transform.localPosition.z > trainingArea.zBound)
+        {
+            AddReward(-1.0f);
+            episodeEnd = true;
+            EndEpisode();
+        }
+
     }
 }
