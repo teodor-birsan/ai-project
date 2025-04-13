@@ -12,8 +12,9 @@ public class PathAgent : Agent
     private Rigidbody rBody;
     private DetectObstacles detectObstacles; // Referinta la componenta RigidBody a agentului
     public Transform Target; // Referinta la componenta Transform a target-ului (sfarsitul platformei)
-    public float movementForce = 10f;
-    public float jumpForce = 5f;
+    [SerializeField] float movementForce;
+    [SerializeField] float jumpForce;
+
     void Start()
     {   
         rBody = GetComponent<Rigidbody>(); // Se face referinta la componenta RigidBody
@@ -27,7 +28,9 @@ public class PathAgent : Agent
         {
             rBody.angularVelocity = Vector3.zero;
             rBody.linearVelocity = Vector3.zero;
-            transform.localPosition = new Vector3(2.5f, 0.86f, 3f);
+            var xPos = Random.Range(0, 6);
+            var zPos = Random.Range(0, 2);
+            transform.localPosition = new Vector3(xPos, 0, zPos);
         }   
     }
 
@@ -46,25 +49,33 @@ public class PathAgent : Agent
     {
         // Actiuni
         Vector3 controlSignal = Vector3.zero;
-        controlSignal.x = actions.ContinuousActions[0];
-        controlSignal.z = actions.ContinuousActions[1];
-        // TODO: agentul nu site sa sara peste obstacole
-        rBody.AddForce(controlSignal * movementForce);
+        Vector2 agentMovementXY = Vector2.zero;
+        agentMovementXY.x = actions.ContinuousActions[0];
+        agentMovementXY.y = actions.ContinuousActions[1];
+        agentMovementXY *= movementForce;
+        var jump = actions.DiscreteActions[0] * jumpForce;
+        controlSignal = new Vector3(agentMovementXY.x, 0, agentMovementXY.y);
+        if (detectObstacles.isGrounded && jump > 0)
+        {
+            controlSignal.y = jump;
+            AddReward(-0.2f);
+        }
+        rBody.AddForce(controlSignal, ForceMode.Force);
 
         float distanceToTarget = Vector3.Distance(transform.localPosition, Target.localPosition);
 
         if(distanceToTarget < 1.0f){
-            SetReward(1.0f);
+            AddReward(5.0f);
             EndEpisode();
         }
         else{
             if(transform.localPosition.y < 0){
-                SetReward(-1.0f);
+                AddReward(-5.0f);
                 EndEpisode();
             }
             
             if(detectObstacles.obstacleDetected){
-                SetReward(-0.5f);
+                AddReward(-0.5f);
             }
         }
     }

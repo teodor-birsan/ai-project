@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d87d427-fdbd-4d65-97a4-3de3e9bde76f" name="Changes" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.idea/AI Project - Python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AI Project - Python.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -16,6 +17,21 @@
       <change beforePath="$PROJECT_DIR$/../AI Project - Unity/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AI Project - Unity/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../AI Project - Unity/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AI Project - Unity/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../AI Project - Unity/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../AI Project - Unity/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/config/mlagents-ppo/ppo_config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/AI Project - Python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AI Project - Python.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comenzi.md" beforeDir="false" afterPath="$PROJECT_DIR$/comenzi.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/ppo/custom_ppo.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/ppo/results/test/configuration.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/ppo/results/test/run_logs/timers.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/ppo/results/test/run_logs/training_status.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/sac/custom_sac.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AI Project - Unity/Assets/ML-Agents/Timers/SampleScene_timers.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AI Project - Unity/Assets/ML-Agents/Timers/SampleScene_timers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AI Project - Unity/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../AI Project - Unity/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AI Project - Unity/Assets/Scripts/PathAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AI Project - Unity/Assets/Scripts/PathAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AI Project - Unity/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../AI Project - Unity/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +69,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+<<<<<<< Updated upstream
     "Python.main.executor": "Run",
+=======
+>>>>>>> Stashed changes
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
@@ -75,6 +94,12 @@
       <recent name="D:\Facultate\Proiect AI\ai-project\AI Project - Python\ml-agents-trainer-plugin\mlagents_trainer_plugin" />
     </key>
   </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="conda activate mlagents(sau ce nume are environmnet-ul cu pachetele mlagents)" />
+      <command value="conda activate mlagents" />
+    </option>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -91,6 +116,7 @@
       <workItem from="1744359284668" duration="15000" />
       <workItem from="1744359342912" duration="4431000" />
       <workItem from="1744364347495" duration="52000" />
+      <workItem from="1744547659018" duration="6871000" />
     </task>
     <servers />
   </component>

@@ -5,8 +5,9 @@
       <sourceFolder url="file://$MODULE_DIR$/mlagents/ml-agents/ml-agents" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mlagents/ml-agents/ml-agents-envs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/trainer_plugins" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/mlagents/ml-agents/ml-agents-trainer-plugin" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="mlagents (2)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="mlagents" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
