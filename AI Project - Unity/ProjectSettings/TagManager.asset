@@ -8,6 +8,10 @@ TagManager:
   - Floor
   - Target
   - TrainingArea
+  - MainMap
+  - Wall
+  - SpawnArea
+  - Agent
   layers:
   - Default
   - TransparentFX

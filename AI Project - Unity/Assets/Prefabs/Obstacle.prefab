@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9049944781743194455}
   m_Layer: 0
   m_Name: Joint
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3210608934128842047}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.168, y: 0.25, z: 0.113}
+  m_LocalPosition: {x: 0.168, y: 0.08333333, z: 0.113}
   m_LocalScale: {x: 1.5, y: 0.2, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -667,10 +667,10 @@ MeshCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &5015432344404090560
@@ -702,7 +702,7 @@ Transform:
   m_GameObject: {fileID: 5015432344404090560}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 0.6666667, z: -0.25}
+  m_LocalPosition: {x: -0.25, y: 0.5833333, z: -0.25}
   m_LocalScale: {x: 8, y: 0.106079996, z: 0.38264}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -777,7 +777,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
@@ -811,7 +811,7 @@ GameObject:
   - component: {fileID: 2452327550346858692}
   m_Layer: 0
   m_Name: RotatingPart
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -825,7 +825,7 @@ Transform:
   m_GameObject: {fileID: 5141457878450434803}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 0.3333333, z: -0.25}
+  m_LocalPosition: {x: -0.25, y: 0.16666664, z: -0.25}
   m_LocalScale: {x: 8, y: 0.106079996, z: 0.38264}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -900,7 +900,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
@@ -935,7 +935,7 @@ GameObject:
   - component: {fileID: 8589184439527372959}
   m_Layer: 0
   m_Name: Joint (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -949,7 +949,7 @@ Transform:
   m_GameObject: {fileID: 7718467034626821542}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.168, y: 0.5833334, z: 0.113}
+  m_LocalPosition: {x: 0.168, y: 0.5, z: 0.113}
   m_LocalScale: {x: 1.5, y: 0.2, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1586,10 +1586,10 @@ MeshCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &8372082031410650184
@@ -1608,7 +1608,7 @@ GameObject:
   - component: {fileID: 1819116115968072268}
   m_Layer: 0
   m_Name: ObstacleBody
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2263,10 +2263,10 @@ MeshCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &8688918300262776057
@@ -2280,7 +2280,7 @@ GameObject:
   - component: {fileID: 6784246853660740021}
   m_Layer: 0
   m_Name: Obstacle
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
