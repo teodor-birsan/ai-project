@@ -4,7 +4,7 @@ public class DefineSpawnArea : MonoBehaviour
 {
     private MeshCollider mesh;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         mesh = GetComponent<MeshCollider>();
     }
