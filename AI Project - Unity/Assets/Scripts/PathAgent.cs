@@ -2,46 +2,42 @@ using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
-using UnityEngine.Video;
-using UnityEngine.Rendering;
-using System.Collections.Generic;
-
 
 public class PathAgent : Agent
 {
-    private bool episodeEnd;
-    public TrainingHandler trainingArea;
+    public GameObject agentBody;
+    public GameObject spawnArea;
+    private Vector3 spawnAreaBounds;
     private Rigidbody rBody;
-    private DetectObstacles detectObstacles; // Referinta la componenta RigidBody a agentului
-    public Transform Target; // Referinta la componenta Transform a target-ului (sfarsitul platformei)
-    [SerializeField] float movementForce;
+    private DetectGameObjects detectScript;
+    public Transform target;
+    [SerializeField] float movementSpeed;
     [SerializeField] float jumpForce;
+    [SerializeField] float rotationAngle;
 
     void Start()
-    {   
-        rBody = GetComponent<Rigidbody>(); // Se face referinta la componenta RigidBody
-        detectObstacles = GetComponent<DetectObstacles>(); 
-        episodeEnd = false;
+    {
+        rBody = agentBody.GetComponent<Rigidbody>();
+        detectScript = agentBody.GetComponent<DetectGameObjects>();
+        spawnAreaBounds = spawnArea.GetComponent<DefineSpawnArea>().SpawnAreaBounds();
     }
 
-    // Initializeaza si reseteaza agentul
     public override void OnEpisodeBegin()
     {
-        if (episodeEnd)
-        {
-            rBody.angularVelocity = Vector3.zero;
-            rBody.linearVelocity = Vector3.zero;
-            var xPos = Random.Range(0, trainingArea.spawnBoundX);
-            var zPos = Random.Range(0, trainingArea.spawnBoundZ);
-            transform.localPosition = new Vector3(xPos, 0.5f, zPos);
-            episodeEnd = false;
-        }
+        float xBound = Random.Range(spawnArea.gameObject.transform.localPosition.x - spawnAreaBounds.x,
+                                    spawnArea.gameObject.transform.localPosition.x + spawnAreaBounds.x);
+        float zBound = Random.Range(spawnArea.gameObject.transform.localPosition.z - spawnAreaBounds.z,
+                                    spawnArea.gameObject.transform.localPosition.z + spawnAreaBounds.z);
+        transform.localPosition = new Vector3(xBound, spawnArea.transform.localPosition.y, zBound);
+        SetReward(0f);
+        rBody.linearVelocity = Vector3.zero;
+        rBody.angularVelocity = Vector3.zero;
     }
 
     // Colecteaza informatii despre agent si target
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(Target.localPosition);
+        sensor.AddObservation(target.localPosition);
         sensor.AddObservation(transform.localPosition);
 
         sensor.AddObservation(rBody.linearVelocity.x);
@@ -51,56 +47,71 @@ public class PathAgent : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        // Actiuni
-        Vector3 controlSignal = Vector3.zero;
-        Vector2 agentMovementXY = Vector2.zero;
-        agentMovementXY.x = actions.ContinuousActions[0];
-        agentMovementXY.y = actions.ContinuousActions[1];
-        agentMovementXY *= movementForce;
-        var jump = actions.DiscreteActions[0] * jumpForce;
-        controlSignal = new Vector3(agentMovementXY.x, 0, agentMovementXY.y);
-        if (detectObstacles.isGrounded && jump > 0)
+        // Agent Inputs
+        Vector3 agentMovementVector = new Vector3(actions.ContinuousActions[0], 0, actions.ContinuousActions[1]);
+        var jumpVariable = actions.DiscreteActions[0];
+        var rotationVariable = actions.DiscreteActions[1];
+
+        // Movement Function Calls
+        RotateAgent(rotationAngle * rotationVariable);
+        MoveAgent(agentMovementVector);
+        JumpMethod(jumpForce * jumpVariable);
+
+        // Rewards and Penalties
+        if (detectScript.targetReached)
         {
-            controlSignal.y = jump;
-            rBody.AddForce(controlSignal, ForceMode.Impulse);
+            AddReward(5f);
+            Debug.Log("Target has been reached!");
+            EndEpisode();
+        }
+
+        if (transform.localPosition.y < 0) 
+        {
+            AddReward(-2f);
+            Debug.Log("Agent has fallen off the map!");
+            EndEpisode();
+        }
+
+        if (detectScript.wallHit)
+        {
+            AddReward(-0.3f);
+            Debug.Log("Agent has hit a wall.");
+        }
+
+        if (!detectScript.isGrounded)
+        {
             AddReward(-0.1f);
+        }
+
+        if (detectScript.obstacaleHit)
+        {
+            AddReward(-0.5f);
+            Debug.Log("Agent has hit an obstacle.");
+        }
+    }
+
+    private void MoveAgent(Vector3 inputVector)
+    {
+        if (inputVector.sqrMagnitude == 2)
+        {
+            rBody.linearVelocity = transform.TransformDirection(movementSpeed * 0.7f * Time.deltaTime * inputVector);
         }
         else
         {
-            rBody.AddForce(controlSignal, ForceMode.Force);
+            rBody.linearVelocity = transform.TransformDirection(movementSpeed * Time.deltaTime * inputVector);
         }
+    }
 
-        float distanceToTarget = Vector3.Distance(transform.localPosition, Target.localPosition);
-
-        if(distanceToTarget < 1.0f){
-            AddReward(1.0f);
-            episodeEnd = true;
-            EndEpisode();
-        }
-        else{
-            if(transform.localPosition.y < 0){
-                AddReward(-1.0f);
-                episodeEnd = true;
-                EndEpisode();
-            }
-            
-            if(detectObstacles.obstacleDetected){
-                AddReward(-0.2f);
-            }
-        }
-        if (float.IsNaN(rBody.linearVelocity.x) || float.IsNaN(transform.localPosition.x))
+    private void JumpMethod(float jumpForce)
+    {
+        if (detectScript.isGrounded)
         {
-            Debug.LogWarning("Detected NaN in agent data. Ending episode.");
-            episodeEnd= true;
-            EndEpisode();
+            rBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
-        if (transform.localPosition.x < 0 || transform.localPosition.x > trainingArea.xBound 
-            || transform.localPosition.z < 0 || transform.localPosition.z > trainingArea.zBound)
-        {
-            AddReward(-1.0f);
-            episodeEnd = true;
-            EndEpisode();
-        }
+    }
 
+    private void RotateAgent(float rotationAngle)
+    {
+        rBody.MoveRotation(Quaternion.Euler(rotationAngle * Time.deltaTime * Vector3.up));
     }
 }
