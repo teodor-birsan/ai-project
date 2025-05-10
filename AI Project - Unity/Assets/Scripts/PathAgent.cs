@@ -107,6 +107,12 @@ public class PathAgent : Agent
             AddReward(-0.5f);
             Debug.Log("Agent has hit an obstacle.");
         }
+        if (transform.rotation.x != 0 || transform.rotation.z != 0)
+        {
+            AddReward(-0.5f);
+            EndEpisode();
+            Debug.Log("Agent flipped.");
+        }
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
