@@ -10,16 +10,16 @@ public class DetectGameObjects : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Floor"))
+        if (collision.gameObject.CompareTag("Floor") && gameObject.CompareTag("Agent"))
         {
             isGrounded=false;
         }
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall") && gameObject.CompareTag("Agent"))
         {
             wallHit = false;
         }
 
-        if (collision.gameObject.CompareTag("Obstacle"))
+        if (collision.gameObject.CompareTag("Obstacle") && gameObject.CompareTag("Agent"))
         {
             obstacaleHit = false;
         }
@@ -27,17 +27,17 @@ public class DetectGameObjects : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Floor"))
+        if (collision.gameObject.CompareTag("Floor") && gameObject.CompareTag("Agent"))
         {
             isGrounded = true;
         }
 
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall") && gameObject.CompareTag("Agent"))
         {
             wallHit = true;
         }
 
-        if (collision.gameObject.CompareTag("Obstacle"))
+        if (collision.gameObject.CompareTag("Obstacle") && gameObject.CompareTag("Agent"))
         {
             obstacaleHit = true;
         }
@@ -45,15 +45,16 @@ public class DetectGameObjects : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Target"))
+        if (other.gameObject.CompareTag("Target") && gameObject.CompareTag("Agent"))
         {
             targetReached = true;
+            other.gameObject.SetActive(false);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Target"))
+        if (other.gameObject.CompareTag("Target") && gameObject.CompareTag("Agent"))
         {
             targetReached = false;
         }
