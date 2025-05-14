@@ -5,6 +5,7 @@ using Unity.MLAgents.Actuators;
 using Convert = System.Convert;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using System.Collections;
 
 public class PathAgent : Agent
 {
@@ -35,6 +36,7 @@ public class PathAgent : Agent
 
     public override void OnEpisodeBegin()
     {
+        Debug.Log("Episode started at " + Time.time);
         InitializeTargets();
         collectedTargets = 0;
         Vector3 spawnCenter = spawnArea.transform.position;
@@ -316,5 +318,4 @@ public class PathAgent : Agent
         angularVelocity = axis * angleInDegrees * Mathf.Deg2Rad / Time.fixedDeltaTime;
         lastRotation = transform.rotation;
     }
-
 }

@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &19461308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3657,6 +3657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aeeb197d756e8c4bb8cf2c6e6f22b88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 1228250786}
 --- !u!114 &329736404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10691,7 +10692,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5469734629636531704, guid: aa011d64d4448764e9bbb7968cb0b8db, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5488959244591382564, guid: aa011d64d4448764e9bbb7968cb0b8db, type: 3}
       propertyPath: m_Mesh
@@ -12834,6 +12835,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa011d64d4448764e9bbb7968cb0b8db, type: 3}
+--- !u!1 &1228250786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6597511690841958095, guid: aa011d64d4448764e9bbb7968cb0b8db, type: 3}
+  m_PrefabInstance: {fileID: 1228250785}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1257583002
 Mesh:
   m_ObjectHideFlags: 0
@@ -13587,7 +13593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5469734629636531704, guid: aa011d64d4448764e9bbb7968cb0b8db, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5488959244591382564, guid: aa011d64d4448764e9bbb7968cb0b8db, type: 3}
       propertyPath: m_Mesh
@@ -15134,7 +15140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5469734629636531704, guid: aa011d64d4448764e9bbb7968cb0b8db, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5488959244591382564, guid: aa011d64d4448764e9bbb7968cb0b8db, type: 3}
       propertyPath: m_Mesh
@@ -20766,7 +20772,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5469734629636531704, guid: aa011d64d4448764e9bbb7968cb0b8db, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5488959244591382564, guid: aa011d64d4448764e9bbb7968cb0b8db, type: 3}
       propertyPath: m_Mesh

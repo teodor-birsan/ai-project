@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Meniu.unity
     guid: 9bd56e86265ddb24496d470951232a42
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Arm_Scene.unity
     guid: 56c6befa6af3fd14ead6d9d9747a4778
   - enabled: 1
